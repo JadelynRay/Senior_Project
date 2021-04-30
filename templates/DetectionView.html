@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JVW Fake News Detector</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+</head>
+<style>
+    * {
+	margin: 0;
+	padding: 0;
+}
+body {
+	text-align: center;
+}
+.wrapper {
+	width: 1170px;
+	margin: 0 auto;
+}
+header {
+	height: 100px;
+	background: #262626;
+	width: 100%;
+	z-index: 10;
+	position: fixed;
+}
+.footer {
+   position:absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#262626;
+   color: white;
+   text-align: center;
+}
+.logo {
+	width: 30%;
+	float: left;
+	line-height: 100px;
+}
+.logo a {
+	text-decoration: none;
+	font-size: 15px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: #fff;
+	letter-spacing: 5px;
+}
+nav {
+	float: right;
+	line-height: 100px;
+}
+nav a {
+	text-decoration: none;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	letter-spacing: 4px;
+	font-size: 20px;
+	margin: 0 10px;
+	color: #fff;
+}
+.banner-area {
+	width: 100%;
+	height: 500px;
+	position: fixed;
+	top: 100px;
+	background-image: url('/static/newsdetect.jpg');
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+.banner-area h2 {
+	padding-top: 8%;
+	font-size: 70px;
+	font-family: poppins;
+	text-transform: uppercase;
+	color: #fff;
+}
+.content-area {
+	width: 100%;
+	position: relative;
+	top: 450px;
+	background: #ebebeb;
+	height: 1500px;
+}
+.content-area h2 {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	letter-spacing: 4px;
+	padding-top: 30px;
+	font-size: 40px;
+	margin: 0;
+}
+.content-area p {
+	padding: 2% 0px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	line-height: 30px;
+}
+
+.center-textbox{
+    margin:auto;
+    display:block;
+    width:1000px;
+    height:400px;
+}
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h4{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.btn{
+    background-color:#4c93af;
+    border: none;
+  color:white;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 4px 2px;
+  width: 180px;
+}
+
+</style>
+<body>
+	<div class="box-area">
+		<header>
+			<div class="wrapper">
+				<div class="logo">
+					<a href="#">JVW Fake News Detector</a>
+				</div>
+				<nav>
+				  <a href="View5_Help.html">Contact</a>
+				</nav>
+			</div>
+		</header>
+		<div class="banner-area">
+			<h2></h2>
+		</div>
+		<div class="content-area">
+			<div class="wrapper">
+				<h2>Our Vision</h2>
+				<p> 
+                    Do you trust all the news you hear online? What we see online is becoming unregulated, 
+                    so now there are large possibilities that what you are reading are lies. 
+                    When there are articles containing false and/or exaggerated claims it creates an "all news is fake" 
+                    mentality. By creating the "JVW Fake News Detector", we plan to avoid that. 
+                </p>
+				<p>
+					As our user, you can simply enter text from any article below. Our easy to use interface will simply show you whether
+                    what you are reading is REAL or FAKE!
+				</p>
+                <h4>Lets get started!</h4>
+                <br><br><br><br><br><br><br>
+                <h1>Insert text below:</h1>
+                <h4><i>The more text you enter, the more reliable our fake news detection system is. For the best results, please enter at least a paragraph.</i></h4>
+              <!-- <div>               
+                <input class="center-textbox">
+                </div> -->
+				<br><br><br>
+				<form action="{{ url_for('predict')}}" method="POST">
+					<textarea  name="message" rows="6" cols="50" required="required" style="font-size: 30pt"></textarea>
+					<br> </br>
+					<button type="submit" class="btn btn-primary btn-block btn-large">Generate the TRUTH!</button>
+			
+						<div class="results">
+			
+				{% if prediction == ['FAKE']%}
+				<h2 style="color:red;">The given text you entered is FAKE! </h2>
+				{% elif prediction == ['REAL']%}
+							<h2 style="color:green;"><b>The given text you entered is REAL!</b></h2>
+				{% endif %}
+			
+				</div>
+			
+				</form>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+			
+				  <div class="footer">
+					  <p>The JVW Fake News Detector has a 90% accuracy rating.</p> 
+					  <p>Remember, it is always best to continue your own research alongisde this product to determine if what you are reading is fake or real!</p>
+				  </div>
+                <!-- <div class="Div2">
+                
+                    <button type="submit" class="button" id=generate_button>Generate the TRUTH!</button> 
+                </a>
+                </div> -->
+			</div>
+		</div>
+	</div>
+
+    
+</body>
+<script type="text/javascript">
+	alert("Users of the JVW Fake News Detector must be 16 years of age or older.By continuing, you agree to receive permission from your parent/guardian to use this site.");
+	</script>
+</html>
